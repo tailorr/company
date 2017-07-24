@@ -14,5 +14,23 @@ requirejs.config({
 
 
 require(['jquery', 'app/BackTop', 'app/Carousel', 'app/Exposure'], function($, BackTop, Carousel, Exposure) {
+    Carousel.init($('.carousel'))
     BackTop.init($('#back-top'))
+    Exposure.one($('#portfolio'))
+    $('#portfolio .more').on('click', function() {
+        console.log(1)
+        $.ajax({
+            url: '/getProducts',
+            dataType: 'json',
+            method: 'GET',
+            data: {
+                page: page,
+                index: index
+            }
+        }).then(function(response) {
+            console.log(response)
+        }, function() {
+            alert('Data is missing!')
+        })
+    })
 })

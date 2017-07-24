@@ -1,5 +1,7 @@
 define(['jquery'], function($) {
     var CarouselCenter = (function() {
+
+
         function Carousel($carousel) {
             this.$carousel = $carousel
             this.$imgWrap = this.$carousel.find('.img-wrap')
@@ -34,8 +36,12 @@ define(['jquery'], function($) {
                     _this._pausePlay()
                 })
                 this.$carousel.on('mouseleave', function() {
-                    _this._autoPlay()
-                })
+                        _this._autoPlay()
+                    })
+                    // this.$bullets.on('click', function() {
+                    //     targetIndex = $(this).index()
+                    //     _this._playIndex($(this).index())
+                    // })
             },
             _play: function(targetIndex) {
                 var _this = this
@@ -43,14 +49,13 @@ define(['jquery'], function($) {
 
                 if (targetIndex === this.currentIndex) return
                 var step = this.currentIndex - targetIndex
-                console.log(this.currentIndex, targetIndex, step)
                 switch (true) { //   switch语句 如果判断条件是表达式而非变量   这里用true替代
 
                     case step < 0:
                         this.$imgWrap.prepend(this.$imgWrap.children().last()).css('left', -this.$imgWidth)
                         this.$imgWrap.animate({
                             "left": 0
-                        }, function() {
+                        }, 1000, function() {
                             _this._setBullet()
                             _this.isAnimate = false
                         })
@@ -59,7 +64,7 @@ define(['jquery'], function($) {
                     case step > 0:
                         this.$imgWrap.animate({
                             "left": -step * this.$imgWidth
-                        }, function() {
+                        }, 1000, function() {
                             _this.$imgWrap.append(_this.$imgWrap.children().first()).css('left', 0)
                             _this.isAnimate = false
                             _this._setBullet()
@@ -89,10 +94,25 @@ define(['jquery'], function($) {
                     _this._setBullet()
                 })
             },
+            _playIndex: function(targetIndex) {
+                var _this = this
+                if (targetIndex === this.currentIndex) return
+                var step = this.currentIndex - targetIndex
+                console.log('currentIndex:' + this.currentIndex, 'targetIndex:' + targetIndex, 'step:' + step)
+
+                this.$imgWrap.animate({
+                    "left": '+=' + step * this.$imgWidth
+                }, function() {
+                    _this._setBullet()
+                    _this.isAnimate = false
+                    _this.currentIndex = targetIndex
+                    console.log('hui')
+                })
+            },
             _autoPlay: function() {
                 var _this = this
                 this.timerId = setInterval(function() {
-                    _this._playNext()
+                    _this._play(_this._getIndex() - 1)
                 }, 2500)
             },
             _pausePlay: function() {

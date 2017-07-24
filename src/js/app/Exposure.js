@@ -57,5 +57,4 @@ define(['jquery'], function($) {
         }
     })()
     return Exposure
-
 });
