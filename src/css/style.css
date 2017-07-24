@@ -173,15 +173,11 @@ textarea {
 #header .img-wrap>li {
     float: left;
     width: 25%;
+    height: 100%;
 }
 
-#header .img-wrap>li>a {
-    display: inline-block;
-}
-
-#header .img-wrap>li>a>img {
-    vertical-align: top;
-    width: 100%;
+#header .carousel .img-wrap li {
+    background-size: cover;
 }
 
 #header .topbar {

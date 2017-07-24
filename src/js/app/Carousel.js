@@ -121,6 +121,13 @@ define(['jquery'], function($) {
             _setIndex: function() {
                 this.$img.each(function(index, element) {
                     $(element).attr('index', index)
+                    if ($(element).attr('data-src')) {
+                        console.log($(this).attr('data-src'))
+
+                        $(element).css({
+                            'background': 'url(' + $(this).attr('data-src') + ')'
+                        })
+                    }
                 })
             },
             _getIndex: function() {
