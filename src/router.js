@@ -1895,11 +1895,14 @@ app.get('/getProducts', function(request, response) {
         length = request.query.length,
         data = []
 
-    let startIndex = parseInt(page) + parseInt((page - 1) * 9)
-
+    let startIndex = parseInt(page) + parseInt(page * 5)
+    length = parseInt(length)
     data = allData.splice(startIndex, length)
-    response.send({
-        status: 0,
-        data: data
-    })
+    if (data.length) {
+        response.send({
+            status: 0,
+            data: data
+        })
+    }
+
 })

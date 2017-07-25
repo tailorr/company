@@ -304,15 +304,20 @@ textarea {
 
 #portfolio .portfolio-list {
     margin-top: -30px;
+    position: relative;
 }
 
 #portfolio .portfolio-item {
-    float: left;
+    position: absolute;
     margin: 30px 25px 0;
     padding-bottom: 10px;
     width: 330px;
     background: #fff;
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+#portfolio .portfolio-item.hide {
+    display: none;
 }
 
 #portfolio .portfolio-item a {
@@ -361,7 +366,7 @@ textarea {
 
 #portfolio .portfolio-item img {
     width: 330px;
-    height: 240px;
+    /* height: 240px; */
     vertical-align: top;
 }
 
