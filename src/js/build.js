@@ -7,5 +7,5 @@
         'Exposure': 'app/Exposure'
     },
     name: 'app.js',
-    out: '../../dist/script/index.merge.js'
+    out: '../../dist/script/merge.js'
 })
