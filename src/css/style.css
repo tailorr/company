@@ -177,7 +177,7 @@ textarea {
 }
 
 #header .carousel .img-wrap li {
-    background-size: cover;
+    background-size: cover !important;
 }
 
 #header .topbar {
